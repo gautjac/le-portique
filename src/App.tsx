@@ -50,6 +50,14 @@ export default function App() {
     };
   }, []);
 
+  // keep the document language + metadata in sync with the toggle
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = t(lang, "docTitre");
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", t(lang, "docDescription"));
+  }, [lang]);
+
   // live data: all days (for streak) — re-runs on every write
   const jours = useLiveQuery(() => db.jours.toArray(), [tick]) as JourEntree[] | undefined;
 

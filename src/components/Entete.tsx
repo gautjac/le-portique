@@ -59,6 +59,8 @@ export default function Entete({
           <button
             type="button"
             onClick={onToggleLang}
+            aria-label={t(lang, "langueAria")}
+            title={t(lang, "langueAria")}
             className="rounded-md px-2.5 py-1 font-mono text-xs font-semibold text-ink-soft ring-1 ring-ink/15 transition hover:bg-marble-dim/60"
           >
             {t(lang, "langueBouton")}

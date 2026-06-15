@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { variationVue } from "../api";
-import { VUE_SCRIPT, type VueLigne } from "../data/vueDenHaut";
+import { VUE_SCRIPT, ligneTexte, type VueLigne } from "../data/vueDenHaut";
 import { t, type Lang } from "../i18n";
 import { Capital, GhostButton, Panel, PrimaryButton } from "./ui";
 
@@ -53,7 +53,9 @@ export default function Vue({ lang }: { lang: Lang }) {
       const built: VueLigne[] = res.lignes.map((texte, i) => {
         const phase = i / Math.max(1, n - 1);
         const altitude = Math.sin(phase * Math.PI); // rise then return
-        return { texte, duree: 8, altitude };
+        // The variation is already composed in the active language; mirror it
+        // into both slots so ligneTexte() renders it regardless of `lang`.
+        return { fr: texte, en: texte, duree: 8, altitude };
       });
       commencer(built);
     } catch (e) {
@@ -121,7 +123,7 @@ export default function Vue({ lang }: { lang: Lang }) {
               key={idx}
               className="animate-fadeIn font-display text-3xl font-medium leading-snug text-ink sm:text-4xl"
             >
-              {current?.texte}
+              {current ? ligneTexte(current, lang) : ""}
             </p>
             {last && (
               <p className="mt-6 animate-fadeIn font-serif text-lg italic text-ink-faint">

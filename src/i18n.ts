@@ -96,7 +96,11 @@ const FR: Dict = {
   // misc
   erreur: "Quelque chose a échoué. Réessaie.",
   langueBouton: "EN",
+  langueAria: "Passer à l'anglais",
   date: "Aujourd'hui",
+  docTitre: "Le Portique — la pratique stoïcienne au quotidien",
+  docDescription:
+    "Le Portique — un gymnase de pratique stoïcienne au quotidien. Le matin, le tri, le soir : rencontrer le jour avec équanimité.",
 };
 
 const EN: Dict = {
@@ -183,7 +187,11 @@ const EN: Dict = {
   onbEntrer: "Enter",
   erreur: "Something failed. Try again.",
   langueBouton: "FR",
+  langueAria: "Switch to French",
   date: "Today",
+  docTitre: "Le Portique — daily Stoic practice",
+  docDescription:
+    "Le Portique — a gymnasium for daily Stoic practice. Morning, the sort, evening: meeting the day with equanimity.",
 };
 
 const DICTS: Record<Lang, Dict> = { fr: FR, en: EN };
